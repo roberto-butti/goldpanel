@@ -1,0 +1,24 @@
+{
+  "name": "goldpanel",
+  "homepage": "https://github.com/roberto-butti/goldpanel",
+  "authors": [
+    "Roberto B. <roberto.butti@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "AdminLTE": "admin-lte#~2.3.2"
+  }
+}
