@@ -7,6 +7,6 @@ Homestead.json
 /config/local
 .DS_Store
 bootstrap/cache/
-storage/
+
 
 
