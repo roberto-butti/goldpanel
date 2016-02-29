@@ -8,7 +8,7 @@ Homestead.json
 .env
 /config/local
 .DS_Store
-bootstrap/cache/
+/.idea/
 
 
 
