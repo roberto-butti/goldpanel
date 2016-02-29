@@ -1,8 +1,8 @@
 <!-- Main Header -->
 <header class="main-header">
-
+{{ $count }}
     <!-- Logo -->
-    <a href="{{ url('') }}" class="logo"><b>Admin</b>LTE</a>
+    <a href="{{ url('') }}" class="logo"><b>G</b>old <b>P</b>anel</a>
 
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">

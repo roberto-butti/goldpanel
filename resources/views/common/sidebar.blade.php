@@ -37,7 +37,7 @@
             @else
 
             @endif
-            <li><a href="{{ url('tasks') }}" class="{{ $class_link }}"><span>Tasks</span></a></li>
+            <li><a href="{{ url('tasks') }}" class=""><span>Tasks</span></a></li>
 
             <li class="active"><a href="#"><span>Link</span></a></li>
             <li><a href="#"><span>Another Link</span></a></li>
