@@ -39,16 +39,7 @@ class CommonHeaderComposer
      */
     public function compose(View $view)
     {
-        //$viewdata= $view->getData();
-        //echo count($viewdata);
-        //dd(Auth::user());
-        //echo get_class($this->request->user());
         $count=  $this->tasks->howManyForUser($this->request->user());
-        //$count=1;
-        //echo get_class($this->request->getUser());
-        //echo $viewdata["app"]->getRequest();
-        //$viewdata['id'];
-        //print_r($viewdata);
         $view->with('count', $count);
     }
 }
