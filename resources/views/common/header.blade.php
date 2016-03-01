@@ -1,6 +1,5 @@
 <!-- Main Header -->
 <header class="main-header">
-{{ $count }}
     <!-- Logo -->
     <a href="{{ url('') }}" class="logo"><b>G</b>old <b>P</b>anel</a>
 
@@ -18,10 +17,10 @@
                     <!-- Menu toggle button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-envelope-o"></i>
-                        <span class="label label-success">4</span>
+                        <span class="label label-success">{{ $count }}</span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">You have 4 messages</li>
+                        <li class="header">You have {{ $count }} tasks</li>
                         <li>
                             <!-- inner menu: contains the messages -->
                             <ul class="menu">

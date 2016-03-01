@@ -4,15 +4,18 @@ namespace App\Http\ViewComposers;
 
 use Illuminate\View\View;
 //use Illuminate\Users\Repository as UserRepository;
+use App\Repositories\TaskRepository as TaskRepository;
+use Illuminate\Http\Request;
 
 class CommonHeaderComposer
 {
     /**
      * The user repository implementation.
      *
-     * @var UserRepository
+     * @var TaskRepository
      */
-    protected $users;
+    protected $tasks;
+    protected $request;
 
     /**
      * Create a new profile composer.
@@ -21,10 +24,11 @@ class CommonHeaderComposer
      * @return void
      */
     //public function __construct(UserRepository $users)
-    public function __construct()
+    public function __construct(TaskRepository $tasks, Request $request)
     {
         // Dependencies automatically resolved by service container...
-
+        $this->request = $request;
+        $this->tasks = $tasks;
     }
 
     /**
@@ -35,6 +39,16 @@ class CommonHeaderComposer
      */
     public function compose(View $view)
     {
-        $view->with('count', 5);
+        //$viewdata= $view->getData();
+        //echo count($viewdata);
+        //dd(Auth::user());
+        //echo get_class($this->request->user());
+        $count=  $this->tasks->howManyForUser($this->request->user());
+        //$count=1;
+        //echo get_class($this->request->getUser());
+        //echo $viewdata["app"]->getRequest();
+        //$viewdata['id'];
+        //print_r($viewdata);
+        $view->with('count', $count);
     }
 }
