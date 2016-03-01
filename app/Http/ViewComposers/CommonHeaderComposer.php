@@ -23,10 +23,8 @@ class CommonHeaderComposer
      * @param  UserRepository  $users
      * @return void
      */
-    //public function __construct(UserRepository $users)
     public function __construct(TaskRepository $tasks, Request $request)
     {
-        // Dependencies automatically resolved by service container...
         $this->request = $request;
         $this->tasks = $tasks;
     }
