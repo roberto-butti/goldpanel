@@ -48,11 +48,8 @@
                             </div>
                         </div>
                         <script type="text/javascript">
-                            $('#date-deadline').datepicker({
-    todayBtn: "linked",
-    clearBtn: true,
-    language: "it"
-});
+
+
                         </script>
 
                         <!-- Task Note -->
