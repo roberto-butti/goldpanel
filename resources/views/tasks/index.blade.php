@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="col-sm-offset-2 col-sm-8">
+        <div class=" col-sm-10">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     New Task
@@ -41,11 +41,9 @@
                         <div class="form-group">
                             <label for="task-deadline" class="col-sm-3 control-label">Deadline</label>
 
-                            <div class="input-group date" id="datepickerz">
-                            <input type="text" name="deadline" class="form-control">
-                            <div class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
-                            </div>
+                            <div class=" col-sm-6" id="datepickerz">
+                            <input type="datetime" name="deadline" class="form-control">
+
                             </div>
                             <!--
                             <div id="date-deadline" class="col-sm-6">
@@ -89,15 +87,26 @@
                     </div>
 
                     <div class="panel-body">
-                        <table class="table table-striped task-table">
+                        <table class="table table-hover task-table">
                             <thead>
                                 <th>Task</th>
+                                <th>Deadline</th>
+                                <th>Status</th>
+
                                 <th>&nbsp;</th>
                             </thead>
                             <tbody>
                                 @foreach ($tasks as $task)
+                                    @if ($task->status == "done")
+                                    <tr class="success">
+                                    @elseif ($task->status == "doing")
+                                    <tr class="info">
+                                    @else
                                     <tr>
+                                    @endif
                                         <td class="table-text"><div>{{ $task->name }}</div></td>
+                                        <td class="table-text"><div>{{ $task->deadline }}</div></td>
+                                        <td class="table-text"><div>{{ $task->status }}</div></td>
 
                                         <!-- Task Delete Button -->
                                         <td>
