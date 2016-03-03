@@ -40,12 +40,21 @@
                         <!-- Task Deadline -->
                         <div class="form-group">
                             <label for="task-deadline" class="col-sm-3 control-label">Deadline</label>
+
+                            <div class="input-group date" id="datepickerz">
+                            <input type="text" name="deadline" class="form-control">
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-th"></span>
+                            </div>
+                            </div>
+                            <!--
                             <div id="date-deadline" class="col-sm-6">
                                 <input type="text" name="deadline" id="task-deadline" class="form-control" value="{{ old('task') }}">
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-th"></span>
                                 </div>
                             </div>
+                            -->
                         </div>
                         <script type="text/javascript">
 
