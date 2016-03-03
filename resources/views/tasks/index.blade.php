@@ -25,6 +25,44 @@
                             </div>
                         </div>
 
+                        <!-- Task Status -->
+                        <div class="form-group">
+                            <label for="task-name" class="col-sm-3 control-label">Status</label>
+                            <div class="col-sm-6">
+                                @foreach (App\Task::$vStatus as $key => $stat)
+                                <label class="radio-inline">
+                                  {{ Form::radio('status', $key, $key==App\Task::STATUS_TODO) }} {{ $stat }}
+                                </label>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <!-- Task Deadline -->
+                        <div class="form-group">
+                            <label for="task-deadline" class="col-sm-3 control-label">Deadline</label>
+                            <div id="date-deadline" class="col-sm-6">
+                                <input type="text" name="deadline" id="task-deadline" class="form-control" value="{{ old('task') }}">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $('#date-deadline').datepicker({
+    todayBtn: "linked",
+    clearBtn: true,
+    language: "it"
+});
+                        </script>
+
+                        <!-- Task Note -->
+                        <div class="form-group">
+                            <label for="task-note" class="col-sm-3 control-label">Note</label>
+                            <div class="col-sm-6">
+                                <textarea name="note" id="task-note" class="form-control" rows="3">{{ old('task') }}</textarea>
+                            </div>
+                        </div>
+
                         <!-- Add Task Button -->
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-6">

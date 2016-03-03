@@ -37,7 +37,12 @@ class CommonHeaderComposer
      */
     public function compose(View $view)
     {
-        $count=  $this->tasks->howManyForUser($this->request->user());
+        if ($this->request->user()) {
+            $count=  $this->tasks->howManyForUser($this->request->user());
+        } else {
+            $count=0;
+        }
+
         $view->with('count', $count);
     }
 }
