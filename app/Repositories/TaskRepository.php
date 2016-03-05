@@ -13,18 +13,33 @@ class TaskRepository
      * @param  User  $user
      * @return Collection
      */
-    public function forUser(User $user)
+    public function forUser(User $user, $status = null, $onlytoday=true)
     {
-        return Task::where('user_id', $user->id)
-                    ->orderBy('created_at', 'asc')
+        $task = Task::ownedBy($user->id);
+        if ($onlytoday) {
+            $task = $task->today();
+        }
+        if ($status!=null) {
+            $task = $task->where("status", $status);
+        }
+        return $task->orderBy('created_at', 'desc')
                     ->get();
     }
 
 
-    public function howManyForUser(User $user)
+
+
+    public function howManyTodoForUserToday(User $user)
     {
-        return Task::where('user_id', $user->id)
-                    ->orderBy('created_at', 'asc')
+        return Task::ownedBy($user->id)
+                    ->today()
+                    ->todo()
+                    ->count();
+    }
+    public function howManyForUser(User $user, $status = Task::STATUS_TODO)
+    {
+        return Task::ownedBy($user->id)
+                    ->where("status", $status)
                     ->count();
     }
 }

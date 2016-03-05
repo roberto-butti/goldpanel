@@ -6,6 +6,7 @@ use Illuminate\View\View;
 //use Illuminate\Users\Repository as UserRepository;
 use App\Repositories\TaskRepository as TaskRepository;
 use Illuminate\Http\Request;
+use App\Task;
 
 class CommonHeaderComposer
 {
@@ -38,11 +39,17 @@ class CommonHeaderComposer
     public function compose(View $view)
     {
         if ($this->request->user()) {
-            $count=  $this->tasks->howManyForUser($this->request->user());
+            $count_todo_today=  $this->tasks->howManyTodoForUserToday($this->request->user());
+            $count_todo=  $this->tasks->howManyForUser($this->request->user(), Task::STATUS_TODO);
+            $tasks = $this->tasks->forUser($this->request->user(), Task::STATUS_TODO, true);
         } else {
-            $count=0;
+            $count_todo_today=0;
+            $count_todo=0;
+            $tasks = null;
         }
 
-        $view->with('count', $count);
+        $view->with('count_todo_today', $count_todo_today);
+        $view->with('count_todo', $count_todo);
+        $view->with('tasks', $tasks);
     }
 }

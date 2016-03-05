@@ -4,6 +4,7 @@ namespace App;
 
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Task extends Model
 {
@@ -41,10 +42,52 @@ class Task extends Model
     }
 
     /**
+     * Scope a query to only include TODO tasks.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeTodo($query)
+    {
+        return $query->where('status', self::STATUS_TODO);
+    }
+
+    /**
+     * Scope a query to only include DOING tasks.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeDoing($query)
+    {
+        return $query->where('status', self::STATUS_DOING);
+    }
+
+    /**
+     * Scope a query to only include today tasks.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeToday($query)
+    {
+        return $query->where('deadline',">=",Carbon::today())
+        ->where('deadline',"<",Carbon::tomorrow());
+    }
+
+    /**
+     * Scope a query to only include tasks owned by a user.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOwnedBy($query, $userId)
+    {
+        return $query->where('user_id',$userId);
+    }
+
+    /**
      * Get the user that owns the task.
      */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
 }
