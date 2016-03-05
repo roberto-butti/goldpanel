@@ -21,7 +21,7 @@
                             <label for="task-name" class="col-sm-3 control-label">Task</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="name" id="task-name" class="form-control" value="{{ old('task') }}">
+                                <input type="text" name="name" id="task-name" class="form-control" value="{{ old('name') }}">
                             </div>
                         </div>
 
@@ -42,7 +42,7 @@
                             <label for="task-deadline" class="col-sm-3 control-label">Deadline</label>
 
                             <div class=" col-sm-6" id="datepickerz">
-                            <input type="datetime" name="deadline" class="form-control">
+                            <input type="datetime" name="deadline" class="form-control" value="{{ old('deadline') }}">
 
                             </div>
                             <!--
@@ -63,7 +63,7 @@
                         <div class="form-group">
                             <label for="task-note" class="col-sm-3 control-label">Note</label>
                             <div class="col-sm-6">
-                                <textarea name="note" id="task-note" class="form-control" rows="3">{{ old('task') }}</textarea>
+                                <textarea name="note" id="task-note" class="form-control" rows="3">{{ old('note') }}</textarea>
                             </div>
                         </div>
 

@@ -55,7 +55,8 @@ class TaskController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
-            'status' => 'required'
+            'status' => 'required',
+            'deadline' => 'required|date|after:today'
         ]);
 
         $result = $request->user()->tasks()->create([
