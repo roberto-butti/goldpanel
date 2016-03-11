@@ -41,7 +41,7 @@ class TaskController extends Controller
     public function index(Request $request)
     {
         return view('tasks.index', [
-            'tasks' => $this->tasks->forUser($request->user()),
+            'tasks' => $this->tasks->forUser($request->user(), Task::STATUS_TODO, false),
         ]);
     }
 
@@ -56,7 +56,7 @@ class TaskController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'status' => 'required',
-            'deadline' => 'required|date|after:today'
+            'deadline' => 'required|date'
         ]);
 
         $result = $request->user()->tasks()->create([

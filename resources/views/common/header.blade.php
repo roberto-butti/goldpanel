@@ -20,32 +20,34 @@
                         <span class="label label-success">{{ $count_todo }}</span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">You have {{ $count_todo }} TODO</li>
-                        <li class="header">You have {{ $count_todo_today }} TODO today</li>
+                        <li class="header">You have {{ $count_todo }} to do</li>
+                        <li class="header">You have {{ $count_todo_today }} to do today</li>
                         <li>
                             <!-- inner menu: contains the messages -->
                             <ul class="menu">
+                            @if ($tasks!=null)
                             @foreach ($tasks as $t )
                                 <li><!-- start message -->
                                     <a href="#">
 
                                         <div class="pull-left">
                                             <!-- User Image -->
-                                            <img src="{{ asset("/bower_components/AdminLTE/dist/img/user2-160x160.jpg") }}" class="img-circle" alt="User Image"/>
+                                            <!--img src="{{ asset("/bower_components/AdminLTE/dist/img/user2-160x160.jpg") }}" class="img-circle" alt="User Image"/-->
                                         </div>
                                         <!-- Message title and timestamp -->
                                         <h4>
                                             {{ $t->name }}
-                                            <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                            <small><i class="fa fa-clock-o"></i>{{ $t->deadline }}</small>
                                         </h4>
                                         <!-- The message -->
-                                        <p>Why not buy a new awesome theme?</p>
+                                        <p>[{{ $t->status }}] {{ $t->note }}</p>
                                     </a>
                                 </li><!-- end message -->
                             @endforeach
+                            @endif
                             </ul><!-- /.menu -->
                         </li>
-                        <li class="footer"><a href="#">See All Messages</a></li>
+                        <li class="footer"><a href="{{ url('/tasks') }}">See All Tasks</a></li>
                     </ul>
                 </li><!-- /.messages-menu -->
 
